@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationFindMod">
+				<mods>
+					<li>Maru Race</li>
+				</mods>
+				<match Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						
+						<!-- ==========  Maru Arrows =========== -->
+						
+						<!-- Def -->
+						<ThingCategoryDef>
+							<defName>AmmoMR_Arrow</defName>
+							<label>Maru Arrow</label>
+							<parent>Ammo</parent>
+							<iconPath>UI/Icons/ThingCategories/CaliberArrow</iconPath>
+						</ThingCategoryDef>
+						
+						<!-- ==========  Ammo Set =========== -->
+
+						<CombatExtended.AmmoSetDef>
+							<defName>AmmoSet_MR_Arrow</defName>
+							<label>Maru Arrow</label>
+							<ammoTypes>
+								<Ammo_Maru_Arrow>Maru_Arrow</Ammo_Maru_Arrow>
+								<Ammo_Maru_Arrow_HM>Maru_Arrow_HM</Ammo_Maru_Arrow_HM>
+								<Ammo_Maru_Arrow_EX>Maru_Arrow_EX</Ammo_Maru_Arrow_EX>
+								<Ammo_Maru_Arrow_PR>Maru_Arrow_PR</Ammo_Maru_Arrow_PR>
+								<Ammo_Maru_Arrow_CH>Maru_Arrow_CH</Ammo_Maru_Arrow_CH>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+						
+						<!-- ==========  Ammo =========== -->
+						
+						<ThingDef Class="CombatExtended.AmmoDef" Name="MR_ArrowBase" ParentName="NeolithicAmmoBase" Abstract="True">
+							<statBases>
+								<Mass>0.017</Mass>
+								<Bulk>0.07</Bulk>
+								<Flammability>0.8</Flammability>
+							</statBases>
+							<thingCategories>
+								<li>AmmoMR_Arrow</li>
+							</thingCategories>
+							<stackLimit>500</stackLimit>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting</li>
+							</tradeTags>
+						</ThingDef>
+						
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="MR_ArrowBase">
+							<description>The standard arrow used by Maru compound bows.</description>
+							<defName>Ammo_Maru_Arrow</defName>
+							<label>Maru Arrow</label>
+							<graphicData>
+								<texPath>Things/Ammo/Neolithic/Arrow/Steel</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<MarketValue>0.18</MarketValue>
+							</statBases>
+							<ammoClass>MR_Arrow</ammoClass>
+						</ThingDef>
+						
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="MR_ArrowBase">
+							<description>A standard Maru arrow tipped with uranium, increasing impact and penetrative power.</description>
+							<defName>Ammo_Maru_Arrow_HM</defName>
+							<label>Maru Arrow (High Mass)</label>
+							<graphicData>
+								<texPath>Things/Ammo/Neolithic/Arrow/Steel</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<Mass>0.022</Mass>
+								<Bulk>0.010</Bulk>
+								<MarketValue>0.21</MarketValue>
+							</statBases>
+							<ammoClass>MR_Arrow_HM</ammoClass>
+						</ThingDef>
+						
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="MR_ArrowBase">
+							<description>An unconventional Maru arrow tipped with an explosive solution.</description>
+							<defName>Ammo_Maru_Arrow_EX</defName>
+							<label>Maru Arrow (Explosive)</label>
+							<graphicData>
+								<texPath>Things/Ammo/Neolithic/Arrow/Flame</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<MarketValue>0.22</MarketValue>
+							</statBases>
+							<ammoClass>MR_Arrow_EX</ammoClass>
+						</ThingDef>
+						
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="MR_ArrowBase">
+							<description>An advanced Maru arrow equipped with a propellant that increases initial velocity. Added weight negates increased range.</description>
+							<defName>Ammo_Maru_Arrow_PR</defName>
+							<label>Maru Arrow (Propellant)</label>
+							<graphicData>
+								<texPath>Things/Ammo/Neolithic/Arrow/Plasteel</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.09</Bulk>
+								<MarketValue>0.24</MarketValue>
+							</statBases>
+							<ammoClass>MR_Arrow_PR</ammoClass>
+						</ThingDef>
+						
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="MR_ArrowBase">
+							<description>An advanced Maru arrow tipped with magnetically-contained charged particles, designed to pierce through heavier armor.</description>
+							<defName>Ammo_Maru_Arrow_CH</defName>
+							<label>Maru Arrow (Charge)</label>
+							<graphicData>
+								<texPath>Things/Ammo/Neolithic/Arrow/Plasteel</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<MarketValue>0.25</MarketValue>
+							</statBases>
+							<ammoClass>MR_Arrow_CH</ammoClass>
+						</ThingDef>
+						
+						<!-- ==========  Projectiles =========== -->
+						
+						<ThingDef Name="MR_ArrowProjectileBase" ParentName="BaseBulletCE" Abstract="true">
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_AO_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Arrow</damageDef>
+								<speed>55</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+						
+						<ThingDef ParentName="MR_ArrowProjectileBase">
+							<defName>Maru_Arrow</defName>
+							<label>Maru Arrow</label>
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_AO_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>1.2</armorPenetrationSharp>
+								<armorPenetrationBlunt>5.62</armorPenetrationBlunt>
+								<preExplosionSpawnChance>0.666</preExplosionSpawnChance>
+								<preExplosionSpawnThingDef>Ammo_Maru_Arrow</preExplosionSpawnThingDef>
+							</projectile>
+						</ThingDef>
+						
+						<ThingDef ParentName="MR_ArrowProjectileBase">
+							<defName>Maru_Arrow_HM</defName>
+							<label>Maru Arrow (High Mass)</label>
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_AO_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageAmountBase>9</damageAmountBase>
+								<armorPenetrationSharp>2.4</armorPenetrationSharp>
+								<armorPenetrationBlunt>6.40</armorPenetrationBlunt>
+								<preExplosionSpawnChance>0.666</preExplosionSpawnChance>
+								<preExplosionSpawnThingDef>Ammo_Maru_Arrow_HM</preExplosionSpawnThingDef>
+							</projectile>
+						</ThingDef>
+						
+						<ThingDef ParentName="MR_ArrowProjectileBase">
+							<defName>Maru_Arrow_EX</defName>
+							<label>Maru Arrow (Explosive)</label>
+							<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_O_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<explosionRadius>1</explosionRadius>
+								<damageDef>Bomb</damageDef>
+								<damageAmountBase>5</damageAmountBase>
+								<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+								<preExplosionSpawnChance>0.15</preExplosionSpawnChance>
+								<preExplosionSpawnThingDef>Ammo_Maru_Arrow</preExplosionSpawnThingDef>
+							</projectile>
+						</ThingDef>
+						
+						<ThingDef ParentName="MR_ArrowProjectileBase">
+							<defName>Maru_Arrow_PR</defName>
+							<label>Maru Arrow (Propellant)</label>
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_BT_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Arrow</damageDef>
+								<speed>73</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>6.6</armorPenetrationSharp>
+								<armorPenetrationBlunt>14.36</armorPenetrationBlunt>
+								<preExplosionSpawnChance>0.66</preExplosionSpawnChance>
+								<preExplosionSpawnThingDef>Ammo_Maru_Arrow_PR</preExplosionSpawnThingDef>
+							</projectile>
+						</ThingDef>
+						
+						<ThingDef ParentName="MR_ArrowProjectileBase">
+							<defName>Maru_Arrow_CH</defName>
+							<label>Maru Arrow (Charge)</label>
+							<graphicData>
+								<texPath>Things/Weapons/MR_CPB_BO_shot</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Arrow</damageDef>
+								<damageAmountBase>8</damageAmountBase>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+								</secondaryDamage>
+								<armorPenetrationSharp>9.4</armorPenetrationSharp>
+								<armorPenetrationBlunt>23.64</armorPenetrationBlunt>
+							</projectile>
+						</ThingDef>
+						
+						<!-- ==========  Ammo Recipes =========== -->
+						
+						<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+							<defName>MakeAmmo_Maru_Arrow</defName>
+							<label>make Maru Arrow</label>
+							<description>Craft 100 Maru Arrows</description>
+							<jobString>Making Maru Arrows</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>25</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<Ammo_Maru_Arrow>100</Ammo_Maru_Arrow>
+							</products>
+							<workAmount>2400</workAmount>
+						</RecipeDef>
+						
+						<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+							<defName>MakeAmmo_Maru_Arrow_HM</defName>
+							<label>make Maru Arrow (High Mass)</label>
+							<description>Craft 100 High Mass Maru Arrows</description>
+							<jobString>Making Maru Arrows (High Mass)</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Uranium</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Uranium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<Ammo_Maru_Arrow_HM>100</Ammo_Maru_Arrow_HM>
+							</products>
+							<workAmount>2600</workAmount>
+						</RecipeDef>
+						
+						<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+							<defName>MakeAmmo_Maru_Arrow_EX</defName>
+							<label>make Maru Arrow (Explosive)</label>
+							<description>Craft 100 Explosive Maru Arrows</description>
+							<jobString>Making Maru Arrows (Explosive)</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>FSX</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>FSX</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<Ammo_Maru_Arrow_EX>100</Ammo_Maru_Arrow_EX>
+							</products>
+							<workAmount>2600</workAmount>
+						</RecipeDef>
+						
+						<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+							<defName>MakeAmmo_Maru_Arrow_PR</defName>
+							<label>make Maru Arrow (Propellant)</label>
+							<description>Craft 100 Propelled Maru Arrows</description>
+							<jobString>Making Maru Arrows (Propellant)</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Plasteel</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Chemfuel</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Chemfuel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<Ammo_Maru_Arrow_CH>100</Ammo_Maru_Arrow_CH>
+							</products>
+							<workAmount>2800</workAmount>
+						</RecipeDef>
+						
+						<RecipeDef ParentName="AmmoRecipeNeolithicBase">
+							<defName>MakeAmmo_Maru_Arrow_CH</defName>
+							<label>make Maru Arrow (Charge)</label>
+							<description>Craft 100 Charged Maru Arrows</description>
+							<jobString>Making Maru Arrows (Charge)</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Plasteel</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<Ammo_Maru_Arrow_CH>100</Ammo_Maru_Arrow_CH>
+							</products>
+							<workAmount>3000</workAmount>
+						</RecipeDef>
+						
+					</value>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

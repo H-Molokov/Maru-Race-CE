@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Maru Race</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<CombatExtended.AmmoCategoryDef>
+							<defName>MR_Arrow</defName>
+							<label>Maru Arrow</label>
+						</CombatExtended.AmmoCategoryDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<CombatExtended.AmmoCategoryDef>
+							<defName>MR_Arrow_HM</defName>
+							<label>Maru Arrow (High Mass)</label>
+						</CombatExtended.AmmoCategoryDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<CombatExtended.AmmoCategoryDef>
+							<defName>MR_Arrow_EX</defName>
+							<label>Maru Arrow (Explosive)</label>
+						</CombatExtended.AmmoCategoryDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<CombatExtended.AmmoCategoryDef>
+							<defName>MR_Arrow_PR</defName>
+							<label>Maru Arrow (Propellant)</label>
+						</CombatExtended.AmmoCategoryDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<CombatExtended.AmmoCategoryDef>
+							<defName>MR_Arrow_CH</defName>
+							<label>Maru Arrow (Charge)</label>
+						</CombatExtended.AmmoCategoryDef>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+</Patch>
